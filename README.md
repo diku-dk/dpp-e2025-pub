@@ -111,7 +111,7 @@ original handin deadline**, but it is *negotiable*.
 Extensions may be granted on weekly assignment (re-)submission deadlines --
 please ask [William](#TA) if for any reason, personal or otherwise, you need an
 extension (no need to involve Cosmin or Troels unless you wish to complain about
-Anders' decision).
+Williams' decision).
 
 ## Group project and exam
 
