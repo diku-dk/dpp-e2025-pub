@@ -146,14 +146,14 @@ William will be grading your weekly assignments.
 
 We provide a Discord channel for discussions, invite here:
 [discord.gg/Rw8J2dgmJU](https://discord.gg/Rw8J2dgmJU) (please contact
-Anders should the link expire), and advice that you join as soon as
+William should the link expire), and advice that you join as soon as
 possible.
 
 We encourage active discussion of course subjects with fellow
 students, so long as you refrain from directly discussing or sharing
 solutions to weekly assignments and the exam/group project. Should you
 have questions pertaining to your particular solution, please ask them
-in a private message to Williams (your TA), who may refer you to Troels.
+in a private message to William (your TA), who may refer you to Troels.
 
 Please note that while we prefer Discord for communication, you are
 free to use the Absalon discussion forum and private messaging system,
