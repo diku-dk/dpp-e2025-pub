@@ -103,7 +103,7 @@ up to the lab sessions.
 
   * [Various papers related to SCAN and flattening, but which are not very accessible to students](material/week2/papers)
 
-  * PMPH Lecture Notes, chapter 4([pdf](http://hjemmesider.diku.dk/~zgh600/Publications/lecture-notes-pmph.pdf)[bib](material/week2/lecture-notes.bib)))
+  * PMPH Lecture Notes, chapter 4([pdf](http://hjemmesider.diku.dk/~zgh600/Publications/lecture-notes-pmph.pdf) and [bib](material/week2/lecture-notes.bib))
 
 ##### Wednesday
 
