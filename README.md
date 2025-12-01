@@ -117,6 +117,23 @@ up to the lab sessions.
 
   * same as above
 
+#### Week 2
+
+##### Monday
+
+* **Theme**: [Pointer Structures](slides/L5-pointer-structures.pdf)
+
+* **Material**:
+
+  * [The Complexity of Parallel Computations](material/week3/wyllie.pdf) (section 4.1.2)
+
+  * [Data Parallel Algorithms by Hillis and Steele](material/week3/hillis-steele.pdf)
+
+  * [Aaron Hsu's PhD dissertation](material/week3/hsu_dissertation.pdf) (sections 3.2 and 3.3, but the lecture slides should be enough)
+
+##### Wednesday
+
+* **These**: Advanced Techniques
 
 ## Weekly assignments
 
