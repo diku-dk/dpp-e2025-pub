@@ -133,7 +133,13 @@ up to the lab sessions.
 
 ##### Wednesday
 
-* **These**: Advanced Techniques
+* **These**: [Advanced Techniques](slides/L6-advanced-techniques.pdf)
+
+* **Material**:
+
+  * [Deduplication](https://futhark-lang.org/examples/removing-duplicates.html)
+
+  * [Data-Parallel Flattening by Expansion](https://futhark-lang.org/publications/array19.pdf)
 
 ## Weekly assignments
 
