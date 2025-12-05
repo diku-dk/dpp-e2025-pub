@@ -142,4 +142,5 @@ def find_previous [n] 't
 ```
 P.S. I realized later that being able to solve for the next smaller or
 equal element can be used for solving subtree_sizes work efficiently
-and also do parallel bracket matching.
+and also do parallel bracket matching. Found also another version with
+a better complexity [here](https://doi.org/10.1006/jagm.1997.0905).
