@@ -39,7 +39,6 @@ Particularly interesting to Troels are the ones related to
 computational geometry:
 
 * [delaunayRefine](https://cmuparlay.github.io/pbbsbench/benchmarks/delaunayRefine.html)
-* [delaunayTriangulation](https://cmuparlay.github.io/pbbsbench/benchmarks/delaunayTriangulation.html)
 * [rangeQuery2d](https://cmuparlay.github.io/pbbsbench/benchmarks/rangeQuery2d.html)
 
 ## Project Related to Automatic Differentiation
