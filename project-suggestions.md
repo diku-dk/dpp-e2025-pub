@@ -80,8 +80,8 @@ be used for finding the parent vector given given the depth vector of
 a preorder traversal of a tree as seen in previous assignments.  We
 have seen this can be solved be in `O(n^2)` work and `O(n)` span using
 backwards linear search.  This problem can be improved by using
-sorting or a tree of minima [1] to get `O(n log n)` work and `O(n)`
-span (found
+sorting or a binary tree of minima [1] to get `O(n log n)` work and
+`O(n)` span (found
 [here](https://github.com/diku-dk/containers/blob/main/lib/github.com/diku-dk/containers/reduction_tree.fut)
 this is a version with the incorrect complexity [1]).  There exist a
 paper which describes two variants which are work efficient [2] which
