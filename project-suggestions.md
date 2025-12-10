@@ -76,7 +76,7 @@ To solve the previous smaller element problem one must find the index of the fir
 When apply this to all elements we call this the all previous smaller element problem.
 This problem can be used for finding the parent vector given given the depth vector of a preorder traversal of a tree as seen in previous assignments.
 We have seen this can be solved be in `O(n^2)` work and `O(n)` span using backwards linear search.
-This problem can be improved by using sorting or a prefix tree of minima [1] to get `O(n log n)` work and `O(n)` span (see code provided below).
+This problem can be improved by using sorting or a tree of minima [1] to get `O(n log n)` work and `O(n)` span (found [here](https://github.com/diku-dk/containers/blob/main/lib/github.com/diku-dk/containers/reduction_tree.fut)).
 There exist a paper which describes two variants which are work efficient [2] which has `O(log n)` span, this project is about implementing some of these.
 Things to keep is mind the `k` constant should probably be adjusted to have some linear factor for a GPU.
 In this project you will have an opportunity to use a flattening transformation and hopefully end up with something faster than the implementation given.
@@ -89,56 +89,6 @@ And lastly if there is even more time there exists a work efficient implementati
 
 [3] O. Berkman, B. Schieber, U. Vishkin, Optimal Doubly Logarithmic Parallel Algorithms Based On Finding All Nearest Smaller Values, Journal of Algorithms, Volume 14, Issue 3, 1993, Pages 344-370, ISSN 0196-6774, https://doi.org/10.1006/jagm.1993.1018.
 
-```fut
-def backwards_linear_search [n] 't
-                            (op: t -> t -> bool)
-                            (arr: [n]t)
-                            (i: i64) : i64 =
-  loop j = i - 1
-  while j != -1 && not (arr[j] `op` arr[i]) do
-    j - 1
-
-def size (h: i64) : i64 =
-  (1 << h) - 1
-
-def mk_tree [n] 't (op: t -> t -> t) (ne: t) (arr: [n]t) =
-  let temp = i64.num_bits - i64.clz n
-  let h = i64.i32 <| if i64.popc n == 1 then temp else temp + 1
-  let tree_size = size h
-  let offset = size (h - 1)
-  let offsets = iota n |> map (+ offset)
-  let tree = scatter (replicate tree_size ne) offsets arr
-  let arr = copy tree[offset:]
-  let (tree, _, _) =
-    loop (tree, arr, level) = (tree, arr, h - 2)
-    while level >= 0 do
-      let new_size = length arr / 2
-      let new_arr =
-        tabulate new_size (\i -> arr[2 * i] `op` arr[2 * i + 1])
-      let offset = size level
-      let offsets = iota new_size |> map (+ offset)
-      let new_tree = scatter tree offsets new_arr
-      in (new_tree, new_arr, level - 1)
-  in tree
-
-def find_previous [n] 't
-                  (op: t -> t -> bool)
-                  (tree: [n]t)
-                  (idx: i64) : i64 =
-  let sibling i = i - i64.bool (i % 2 == 0) + i64.bool (i % 2 == 1)
-  let parent i = (i - 1) / 2
-  let is_left i = i % 2 == 1
-  let h = i64.i32 <| i64.num_bits - i64.clz n
-  let offset = size (h - 1)
-  let start = offset + idx
-  let v = tree[start]
-  let ascent i = i != 0 && (is_left i || !(tree[sibling i] `op` v))
-  let descent i = 2 * i + 1 + i64.bool (tree[2 * i + 2] `op` v)
-  let index = iterate_while ascent parent start
-  in if index != 0
-     then iterate_while (< offset) descent (sibling index) - offset
-     else -1
-```
 P.S. I realized later that being able to solve for the next smaller or
 equal element can be used for solving subtree_sizes work efficiently
 and also do parallel bracket matching. Found also another version with
