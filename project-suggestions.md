@@ -76,7 +76,7 @@ To solve the previous smaller element problem one must find the index of the fir
 When apply this to all elements we call this the all previous smaller element problem.
 This problem can be used for finding the parent vector given given the depth vector of a preorder traversal of a tree as seen in previous assignments.
 We have seen this can be solved be in `O(n^2)` work and `O(n)` span using backwards linear search.
-This problem can be improved by using sorting or a tree of minima [1] to get `O(n log n)` work and `O(n)` span (found [here](https://github.com/diku-dk/containers/blob/main/lib/github.com/diku-dk/containers/reduction_tree.fut)).
+This problem can be improved by using sorting or a tree of minima [1] to get `O(n log n)` work and `O(n)` span (found [here](https://github.com/diku-dk/containers/blob/main/lib/github.com/diku-dk/containers/reduction_tree.fut) this is a version with the incorrect complexity. [1]).
 There exist a paper which describes two variants which are work efficient [2] which has `O(log n)` span, this project is about implementing some of these.
 Things to keep is mind the `k` constant should probably be adjusted to have some linear factor for a GPU.
 In this project you will have an opportunity to use a flattening transformation and hopefully end up with something faster than the implementation given.
