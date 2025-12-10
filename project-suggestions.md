@@ -176,7 +176,7 @@ of the implementation can be found
 [here](https://github.com/diku-dk/containers/blob/main/lib/github.com/diku-dk/containers/reduction_tree.fut).
 It would interesting to use this together with the
 [Alpacc](https://github.com/diku-dk/alpacc) parser generator to have
-data-parallel paring and evaluation of expressions.  There are other
+data-parallel parsing and evaluation of expressions.  There are other
 ways this can be done like using Parallel Tree Contraction [2] and it
 is possible to use this for other problems [3].
 
