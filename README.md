@@ -169,7 +169,7 @@ up to the lab sessions.
 
 ##### Monday
 
-** **Theme**: [ISPC](slides/L9-ispc.pdf)
+* **Theme**: [ISPC](slides/L9-ispc.pdf)
 
 * **Material**:
 
