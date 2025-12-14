@@ -83,7 +83,7 @@ backwards linear search.  This problem can be improved by using
 sorting or a binary tree of minima [1] to get `O(n log n)` work and
 `O(log n)` span (found
 [here](https://github.com/diku-dk/containers/blob/main/lib/github.com/diku-dk/containers/reduction_tree.fut)
-this is a version with the incorrect complexity [1]).  There exist a
+the original paper has a version with better complexity [1]).  There exist a
 paper which describes two variants which are work efficient [2] which
 has `O(log n)` span, this project is about implementing some of these.
 A things to keep in mind, the `k` constant should probably be adjusted
