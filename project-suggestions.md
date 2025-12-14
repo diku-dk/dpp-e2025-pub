@@ -78,7 +78,7 @@ smaller than the current element.  When apply this to all elements we
 call this the all previous smaller element problem.  This problem can
 be used for finding the parent vector given given the depth vector of
 a preorder traversal of a tree as seen in previous assignments.  We
-have seen this can be solved be in `O(n^2)` work and `O(n)` span using
+have seen this can be solved in `O(n^2)` work and `O(n)` span using
 backwards linear search.  This problem can be improved by using
 sorting or a binary tree of minima [1] to get `O(n log n)` work and
 `O(n)` span (found
@@ -86,9 +86,9 @@ sorting or a binary tree of minima [1] to get `O(n log n)` work and
 this is a version with the incorrect complexity [1]).  There exist a
 paper which describes two variants which are work efficient [2] which
 has `O(log n)` span, this project is about implementing some of these.
-Things to keep is mind the `k` constant should probably be adjusted to
-have some linear factor for a GPU.  In this project you will have an
-opportunity to use a flattening transformation and hopefully end up
+A things to keep in mind, the `k` constant should probably be adjusted
+to have some linear factor for a GPU.  In this project you will have
+an opportunity to use a flattening transformation and hopefully end up
 with something faster than the implementation given.  If there is time
 maybe consider if doing a blocked implementation that utilizes the
 shared memory inside a GPU block will give better performance.  And
@@ -122,7 +122,7 @@ to its head node.  As mentioned beforehand Wyllies list ranking
 algorithm does O(n log n) work and has O(log n) span so it is not work
 efficient.  This project is about implementing an work efficient
 version of list ranking, the first of such was described by Cole and
-Vishkin [2].  The Cole and Vishkin algorith ms very complicated and
+Vishkin [2].  The Cole and Vishkin algorith is very complicated and
 later Anderson and Miller described a much less complicated algorithm
 [3].  There are also other examples of list ranking algorithms which
 uses random mate [4].  It would be interesting to benchmark some of
@@ -159,7 +159,7 @@ V-Graph [1, pp. 79-84] into a V-Tree and adding these conversion
 functions to the library would be part of the project.  Here a V-Graph
 is a vector representation of a graph so making such a library could
 also be part of the project.  There are also operations such as
-splitting and merging these tree that could be be part of the project.
+splitting and merging these trees that could be part of the project.
 The V-Trees could also be used to implement a minimum spanning tree
 algorithm [1, pp 110-113].
 
@@ -174,7 +174,7 @@ Biconnectivity Algorithm. SIAM Journal on Computing 14, 4 (1985),
 There is an old article about evaluating expressions in parallel, part
 of the implementation can be found
 [here](https://github.com/diku-dk/containers/blob/main/lib/github.com/diku-dk/containers/reduction_tree.fut).
-It would interesting to use this together with the
+It would be interesting to use this together with the
 [Alpacc](https://github.com/diku-dk/alpacc) parser generator to have
 data-parallel parsing and evaluation of expressions.  There are other
 ways this can be done like using Parallel Tree Contraction [2] and it
