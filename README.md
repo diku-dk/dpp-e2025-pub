@@ -165,6 +165,17 @@ up to the lab sessions.
 
   * same as above
 
+#### Week 5
+
+##### Monday
+
+* **Theme**: [ISPC](slides/L9-ispc.pdf)
+
+* **Material**:
+
+  * [ispc: A SPMD Compiler for High-Performance CPU Programming](material/week5/ispc_inpar_2012.pdf)
+
+  * [Exercises](material/week5/exercises)
 
 ## Weekly assignments
 
