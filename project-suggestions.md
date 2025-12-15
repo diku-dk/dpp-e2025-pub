@@ -43,7 +43,7 @@ computational geometry:
 
 ## Batched Rank-k Search
 
-For those that have not chosen this problem in the PMPH course, you are welcome to solve [the rank-k search problem](material-projects/rank-search-k/Project-RankSearch-k.pdf).
+For those that have not chosen this problem in the PMPH course, you are welcome to solve [the rank-k search problem](material/rank-search-k/Project-RankSearch-k.pdf).
 
 
 ## Project Related to Automatic Differentiation
