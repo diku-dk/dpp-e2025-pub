@@ -42,6 +42,11 @@ computational geometry:
 * [delaunayTriangulation](https://cmuparlay.github.io/pbbsbench/benchmarks/delaunayTriangulation.html)
 * [rangeQuery2d](https://cmuparlay.github.io/pbbsbench/benchmarks/rangeQuery2d.html)
 
+## Batched Rank-k Search
+
+For those that have not chosen this problem in the PMPH course, you are welcome to solve [the rank-k search problem](material-projects/rank-search-k/Project-RankSearch-k.pdf).
+
+
 ## Project Related to Automatic Differentiation
 
 [Minpack-2](material-projects/Mpack-2/Minpack-2.pdf) is a collection
