@@ -76,6 +76,36 @@ Bonus: if time permits, you may try to optimize the computation, e.g.,
 by packing in a safe way several unit vectors into a denser
 representation that contains several one entries.
 
+## Halide (this project involves some CUDA)
+
+Halide ([paper](https://dl.acm.org/doi/10.1145/2491956.2462176); [github](https://github.com/halide/Halide)) 
+is a (famous) domain-specific language (DSL) for expressing and
+efficiently executing image-processing pipelines, where the main
+optimization is stencil fusion. Halide has popularized the idea
+of separating the implementation into (1) a clean/simple 
+(functional/data-flow) specification which is accessible to domain
+experts and (2) an optimization recipe that is either specified by
+the compiler expert or is inferred through extensive autotuning.
+
+This project requires two main tasks: First, you will install and
+evaluate several Halide optimization recipes on several benchmarks,
+such as for example (1) the blur filter presented in the paper,
+(2) overlapped tiling applied to fuse the same 2D stencil of 
+radius 1, and (3) maybe overlapped tiling + sliding window within
+tiles to fuse the same 3D stencil of radius 1.  
+Second, you will try to write some specialized CUDA code that
+matches Halide performance on some of these benchmarks.  
+ 
+Your project should contain: 
+
+- a summary of the Halide paper that presents (1) the optimizations space organized on three axes---amount of exploited parallelism, locality, redundant computation---and (2) several of the code transformations (optimization recipes) that navigate this space.
+
+- a characterization of the chosen benchmarks, i.e., how does the tradeoff between redundant computation, parallelism and locality manifests for each of them?
+
+- a systematic evaluation of performance that demonstrates the extent to which each specialization (implementation) utilizes the hardware and compares the performance across different optimization recipes of the same stencil program; this refers both to Halide programs and your CUDA implementation. You should probably use a normalized memory throughput (GB/sec) to measure performance (or the roofline model).
+
+- a presentation of the CUDA code that implements each of the chosen examples/benchmarks, which includes the rationale of how this specialization was obtained and where does it fit in the optimization space.  It is fine for readability to use C-like pseudocode in which you annotate with comments which loops form the grid, which loops form the CUDA block of threads, which loops are sequential, which buffers are allocated in shared memory and which are in global memory (for GPU).
+
 ## Vectorised Automatic Differentiation
 
 Vectorised AD is a variant of AD where you have multiple seed values, thus
