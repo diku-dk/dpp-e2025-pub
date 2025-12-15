@@ -126,7 +126,7 @@ val vjp_vec 'a 'b [n] : (f: a -> b) -> (x: a) -> (y': [n]b) -> [n]a
 
 How how the seeds are now arrays of size `n`. The implementation is reasonably
 complete, although likely still buggy. Two kinds of projects are possible in
-this domain. Both are focused on the *implementation* on AD - that is, these are
+this domain. Both are focused on the *implementation* of AD - that is, these are
 projects related to compiler implementation.
 
 1. Apply vectorised AD to a problem that is currently solved with non-vectorised
