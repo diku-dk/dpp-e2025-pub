@@ -71,7 +71,52 @@ Bonus: if time permits, you may try to optimize the computation, e.g.,
 by packing in a safe way several unit vectors into a denser
 representation that contains several one entries.
 
-# All Previous Smaller Element Problem
+## Vectorised Automatic Differentiation
+
+Vectorised AD is a variant of AD where you have multiple seed values, thus
+computing multiple rows (or columns) of the Jacobian simultaneously. It is
+completely unrelated to "vectorisation" understood as SIMD execution, or
+"vectorisation" as an alias for flattening. Vectorised AD is completely
+equivalent to just `map`ing over multiple seed values and using `jvp` or `vjp`
+multiple times, but vectorised AD allows the primal to be computed only once. We
+have an [experimental implementation of vectorised AD for the Futhark
+compiler](https://github.com/diku-dk/futhark/tree/ad-vec), with the following
+API:
+
+```Futhark
+val jvp_vec 'a 'b [n] : (f: a -> b) -> (x: a) -> (x': [n]a) -> [n]b
+
+val vjp_vec 'a 'b [n] : (f: a -> b) -> (x: a) -> (y': [n]b) -> [n]a
+```
+
+How how the seeds are now arrays of size `n`. The implementation is reasonably
+complete, although likely still buggy. Two kinds of projects are possible in
+this domain. Both are focused on the *implementation* on AD - that is, these are
+projects related to compiler implementation.
+
+1. Apply vectorised AD to a problem that is currently solved with non-vectorised
+   AD, and investigate the resulting performance. In practice, I have found that
+   vectorised AD is often (but not always) slower, which I suspect is because
+   arrays show up in undesirable places (e.g. as the operands to reductions).
+   This project is about identifying such cases and proposing remedies, either
+   new optimisations, or tweaks to the vectorised AD algorithm, such as locally
+   disabling vectorisation for some cases. If time permits, these suggestions
+   can also be implemented.
+
+2. Implement additional special cases of vectorised AD. There is a bunch of AD
+   special cases in particular for reductions, scans, or histograms, and not all
+   of these support vectorised AD yet. This project is about adding support in
+   whatever way is most efficient - in some cases this may be by locally
+   disabling vectorisation.
+
+These projects are most relevant if you dream of doing a later project where you
+work on the Futhark compiler itself. We have had several successful DPP projects
+that involve compiler hacking, but they are necessarily limited in scope due to
+the time available. You should be reasonably comfortable with Haskell if you
+pick this project, and be willing to ask for help along the way.
+
+## All Previous Smaller Element Problem
+
 To solve the previous smaller element problem one must find the index
 of the first element with a smaller index which satisfies it is
 smaller than the current element.  When apply this to all elements we
@@ -115,7 +160,8 @@ equal element can be used for solving subtree_sizes work efficiently
 and also do parallel bracket matching. Found also another version with
 a better complexity [here](https://doi.org/10.1006/jagm.1997.0905).
 
-# List Ranking
+## List Ranking
+
 In the course you have been taught about Wyllies list ranking
 algorithm [1] which allows for finding the distance from a given node
 to its head node.  As mentioned beforehand Wyllies list ranking
@@ -146,7 +192,8 @@ Modugno. List Ranking and Parallel Tree Contraction. In John Reif,
 editor, Synthesis of Parallel Algorithms, pp. 115–194, Morgan
 Kaufmann, 1993. https://www.cs.cmu.edu/~glmiller/Publications/Papers/ReMiMo93.pdf
 
-# Vector Data Structures
+## Vector Data Structures
+
 A V-Tree is a data structure with a vector representation which
 describes a tree like the parent vector does.  They are found in
 Blelloch PhD Thesis [1, pp. 84-91] and they represent an Euler tour of
@@ -170,7 +217,8 @@ computing. MIT Press, Cambridge, MA, USA.
 Biconnectivity Algorithm. SIAM Journal on Computing 14, 4 (1985),
 862–874. https://doi.org/10.1137/0214061
 
-# Evaluating Expressions
+## Evaluating Expressions
+
 There is an old article about evaluating expressions in parallel, part
 of the implementation can be found
 [here](https://github.com/diku-dk/containers/blob/main/lib/github.com/diku-dk/containers/reduction_tree.fut).
