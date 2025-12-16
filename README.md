@@ -177,6 +177,25 @@ up to the lab sessions.
 
   * [Exercises](material/week5/exercises)
 
+##### Wednesday
+
+* **Theme**: [Introduction to Polyhedral Analysis](slides/L10-polyhedral.pdf)
+
+* **Demo Code**
+
+  * You will need the `islpy` python module (`$ pip install islpy`)
+  
+  * [Several solved examples](material/week5/Wednesday/demo-poly/)
+  
+  * [Several facultative exercises mentioned in the last section of the slides](material/week5/Wednesday/exercise-poly/)
+
+* **Facultative Material**:
+
+  * [Chapter 5 of PMPH Lecture Notes, entitled "Loop-based data-dependence analysis and applications" introduces a simpler analysis based on direction vectors ](http://hjemmesider.diku.dk/~zgh600/Publications/lecture-notes-pmph.pdf)
+
+  * [Presentations, tutorial and paper related to polyhedral analysis, whose internet references were linked from the slides as well](material/week5/Wednesday/poly-papers-pres)
+
+
 ## Weekly assignments
 
 <img align="right" width="300" src="https://github.com/user-attachments/assets/720668fd-cde1-4000-8729-72771f5b09b9">
