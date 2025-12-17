@@ -26,8 +26,8 @@ Dep    = common.mkDepGraph(Sini, Read, Write)
 print("Dependency graph is:")
 print(Dep);
 
-#Snew = isl.UnionMap("[N] -> {S1[i] -> [i,1]; S2[j] -> [j,2]}").intersect_domain(I)
-Snew = isl.UnionMap("[N] -> {S1[i] -> [1,1]; S2[j] -> [1,2]}").intersect_domain(I)
+Snew = isl.UnionMap("[N] -> {S1[i] -> [i,1]; S2[j] -> [j,2]}").intersect_domain(I)
+#Snew = isl.UnionMap("[N] -> {S1[i] -> [1,1]; S2[j] -> [1,2]}").intersect_domain(I)
 print("New Schedule:");
 print(Snew);
 
