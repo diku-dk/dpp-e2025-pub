@@ -242,7 +242,7 @@ functions to the library would be part of the project.  Here a V-Graph
 is a vector representation of a graph so making such a library could
 also be part of the project.  There are also operations such as
 splitting and merging these trees that could be part of the project.
-The V-Trees could also be used to implement a minimum spanning tree
+The V-Graphs could also be used to implement a minimum spanning tree
 algorithm [1, pp 110-113].
 
 [1] Guy E. Blelloch. 1990. Vector models for data-parallel
