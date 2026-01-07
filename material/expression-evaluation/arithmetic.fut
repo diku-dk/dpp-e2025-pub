@@ -1,12 +1,13 @@
--- Terminal Encoding:
+-- Terminal Encoding: 
 -- T "num": 0
--- TLit "(": 1
--- TLit ")": 2
--- TLit "*": 3
--- TLit "+": 4
--- TLit "-": 5
--- TLit "/": 6
--- T "ignore": 7
+-- T "var": 1
+-- TLit "(": 2
+-- TLit ")": 3
+-- TLit "*": 4
+-- TLit "+": 5
+-- TLit "-": 6
+-- TLit "/": 7
+-- T "ignore": 8
 
 -- Start of lexer.fut
 --
@@ -152,29 +153,29 @@ module lexer = mk_lexer {
 
   type endomorphism = endomorphism_module.t
   type terminal = terminal_module.t
-
-  def identity_endomorphism : endomorphism = 256
-  def dead_terminal : terminal = 8
-  def ignore_terminal : opt terminal = #some 7
-  def endo_mask : endomorphism = 31
-  def endo_offset : endomorphism = 0
-  def terminal_mask : endomorphism = 480
-  def terminal_offset : endomorphism = 5
-  def produce_mask : endomorphism = 512
-  def produce_offset : endomorphism = 9
-
-  def endomorphism_size : i64 = 19
-
-  def accept_array : [endomorphism_size]bool =
-    sized endomorphism_size [false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
+  
+  def identity_endomorphism: endomorphism = 288
+  def dead_terminal: terminal = 9
+  def ignore_terminal: opt terminal = #some 8
+  def endo_mask: endomorphism = 31
+  def endo_offset: endomorphism = 0
+  def terminal_mask: endomorphism = 480
+  def terminal_offset: endomorphism = 5
+  def produce_mask: endomorphism = 512
+  def produce_offset: endomorphism = 9
+  
+  def endomorphism_size: i64 = 22
+  
+  def accept_array: [endomorphism_size]bool =
+    sized endomorphism_size [false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true]
 
   def transitions_to_endomorphisms : [256]endomorphism =
-    sized 256 [257, 257, 257, 257, 257, 257, 257, 257, 257, 226, 226, 257, 257, 226, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 226, 257, 257, 257, 257, 257, 257, 257, 35, 68, 101, 134, 257, 167, 257, 200, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257, 257]
+    sized 256 [289, 289, 289, 289, 289, 289, 289, 289, 289, 258, 258, 289, 289, 258, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 258, 289, 289, 289, 289, 289, 289, 289, 67, 100, 133, 166, 289, 199, 289, 232, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289, 289]
 
   def compositions : [endomorphism_size * endomorphism_size]endomorphism =
-    [256u16, 257u16, 226u16, 35u16, 68u16, 101u16, 134u16, 167u16, 200u16, 9u16, 746u16, 555u16, 588u16, 621u16, 654u16, 687u16, 720u16, 529u16, 18u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 257u16, 226u16, 257u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 35u16, 257u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 68u16, 257u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 101u16, 257u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 134u16, 257u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 167u16, 257u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 200u16, 257u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 9u16, 257u16, 529u16, 529u16, 529u16, 529u16, 529u16, 18u16, 529u16, 18u16, 529u16, 529u16, 529u16, 529u16, 529u16, 18u16, 529u16, 18u16, 18u16, 746u16, 257u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 746u16, 555u16, 257u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 555u16, 588u16, 257u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 621u16, 257u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 654u16, 257u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 687u16, 257u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 720u16, 257u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 529u16, 257u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 529u16, 18u16, 257u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16, 18u16] :> [endomorphism_size * endomorphism_size]endomorphism
-}
+  [288u16, 289u16, 258u16, 67u16, 100u16, 133u16, 166u16, 199u16, 232u16, 9u16, 42u16, 779u16, 588u16, 621u16, 654u16, 687u16, 720u16, 753u16, 530u16, 563u16, 20u16, 53u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 289u16, 258u16, 289u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 67u16, 289u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 100u16, 289u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 133u16, 289u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 166u16, 289u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 199u16, 289u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 232u16, 289u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 9u16, 289u16, 530u16, 530u16, 530u16, 530u16, 530u16, 20u16, 530u16, 20u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 20u16, 530u16, 20u16, 530u16, 20u16, 530u16, 42u16, 289u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 53u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 53u16, 563u16, 53u16, 779u16, 289u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 779u16, 588u16, 289u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 588u16, 621u16, 289u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 621u16, 654u16, 289u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 654u16, 687u16, 289u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 687u16, 720u16, 289u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 720u16, 753u16, 289u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 753u16, 530u16, 289u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 530u16, 563u16, 289u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 563u16, 20u16, 289u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 20u16, 53u16, 289u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16, 53u16] :> [endomorphism_size * endomorphism_size]endomorphism
 
+}
 -- Start of parser.fut
 --
 -- The generic LLP parsing machine, expressed as a parameterised
@@ -494,48 +495,45 @@ module mk_parser (P: parser_context) = {
 
 -- End of parser.fut
 module parser = mk_parser {
-  module terminal_module = u8
-  module production_module = u8
-  module bracket_module = u8
 
-  type terminal = terminal_module.t
-  type production = production_module.t
-  type bracket = bracket_module.t
+module terminal_module = u8
+module production_module = u8
+module bracket_module = u8
 
-  def left (s: bracket) : bracket =
-    bracket_module.set_bit (bracket_module.num_bits - 1) s 1
+type terminal = terminal_module.t
+type production = production_module.t
+type bracket = bracket_module.t
 
-  def right (s: bracket) : bracket =
-    bracket_module.set_bit (bracket_module.num_bits - 1) s 0
+def left (s : bracket) : bracket =
+  bracket_module.set_bit (bracket_module.num_bits - 1) s 1
 
-  def number_of_productions : i64 = 19
-  def q : i64 = 1
-  def k : i64 = 1
-  def empty_terminal : terminal = 8
-  def start_terminal : terminal = 9
-  def end_terminal : terminal = 10
+def right (s : bracket) : bracket =
+  bracket_module.set_bit (bracket_module.num_bits - 1) s 0
 
-  def production_to_terminal : [number_of_productions](opt terminal) =
-    [#none, #none, #none, #none, #none, #none, #none, #none, #none, #none, #some 0, #some 7, #some 1, #some 2, #some 3, #some 4, #some 5, #some 6, #none] :> [number_of_productions](opt terminal)
+def number_of_productions: i64 = 21 
+def q: i64 = 1
+def k: i64 = 1
+def empty_terminal: terminal = 9
+def start_terminal: terminal = 10
+def end_terminal: terminal = 11
+def production_to_terminal: [number_of_productions](opt terminal) =
+  [#none, #none, #none, #none, #none, #none, #none, #none, #none, #none, #none, #some 0, #some 1, #some 8, #some 2, #some 3, #some 4, #some 5, #some 6, #some 7, #none] :> [number_of_productions](opt terminal)
+def production_to_arity: [number_of_productions]i64 =
+  [2, 3, 3, 0, 2, 3, 3, 0, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1] :> [number_of_productions]i64
+def hash_table_size: i64 = 76
+def max_iters: i64 = 6
+def productions_size: i64 = 99
+def stacks_size: i64 = 110
 
-  def production_to_arity : [number_of_productions]i64 =
-    [2, 3, 3, 0, 2, 3, 3, 0, 1, 3, 0, 0, 0, 0, 0, 0, 0, 0, 1] :> [number_of_productions]i64
+def hash_table: [hash_table_size](bool, [q+k]terminal, ((i64, i64), (i64, i64))) =
+  [(false, [0, 3], ((0, 3), (0, 3))), (true, [1, 11], ((37, 40), (28, 30))), (false, [0, 3], ((0, 3), (0, 3))), (true, [0, 6], ((10, 14), (8, 11))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (true, [0, 7], ((14, 17), (11, 13))), (true, [10, 2], ((105, 110), (95, 99))), (false, [0, 3], ((0, 3), (0, 3))), (true, [3, 11], ((68, 71), (55, 57))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (true, [10, 0], ((99, 102), (87, 91))), (false, [0, 3], ((0, 3), (0, 3))), (true, [3, 5], ((57, 61), (47, 50))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (true, [10, 1], ((102, 105), (91, 95))), (false, [0, 3], ((0, 3), (0, 3))), (true, [3, 4], ((54, 57), (45, 47))), (false, [0, 3], ((0, 3), (0, 3))), (true, [0, 11], ((17, 20), (13, 15))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (true, [3, 7], ((65, 68), (53, 55))), (false, [0, 3], ((0, 3), (0, 3))), (true, [2, 2], ((46, 51), (38, 42))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (true, [3, 6], ((61, 65), (50, 53))), (true, [1, 3], ((20, 23), (15, 18))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (true, [2, 0], ((40, 43), (30, 34))), (false, [0, 3], ((0, 3), (0, 3))), (true, [6, 2], ((88, 92), (78, 81))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (true, [2, 1], ((43, 46), (34, 38))), (false, [0, 3], ((0, 3), (0, 3))), (false, [0, 3], ((0, 3), (0, 3))), (true, [3, 3], ((51, 54), (42, 45))), (false, [0, 3], ((0, 3), (0, 3))), (true, [7, 1], ((93, 94), (83, 85))), (true, [9, 10], ((97, 99), (87, 87))), (true, [6, 0], ((84, 86), (72, 75))), (true, [5, 2], ((80, 84), (69, 72))), (true, [11, 9], ((110, 110), (99, 99))), (true, [7, 0], ((92, 93), (81, 83))), (true, [5, 1], ((78, 80), (66, 69))), (true, [6, 1], ((86, 88), (75, 78))), (true, [4, 0], ((71, 72), (57, 59))), (true, [1, 7], ((34, 37), (26, 28))), (true, [1, 6], ((30, 34), (23, 26))), (true, [5, 0], ((76, 78), (63, 66))), (true, [0, 3], ((0, 3), (0, 3))), (true, [4, 1], ((72, 73), (59, 61))), (true, [1, 5], ((26, 30), (20, 23))), (true, [7, 2], ((94, 97), (85, 87))), (true, [0, 4], ((3, 6), (3, 5))), (false, [0, 3], ((0, 3), (0, 3))), (true, [4, 2], ((73, 76), (61, 63))), (true, [1, 4], ((23, 26), (18, 20))), (false, [0, 3], ((0, 3), (0, 3))), (true, [0, 5], ((6, 10), (5, 8))), (false, [0, 3], ((0, 3), (0, 3)))] :> [hash_table_size](bool, [q+k]terminal, ((i64, i64), (i64, i64)))
 
-  def hash_table_size : i64 = 52
-  def max_iters : i64 = 3
-  def productions_size : i64 = 66
-  def stacks_size : i64 = 78
+def stacks: [stacks_size]bracket =
+  [right 24, right 22, right 16, right 24, left 24, left 25, right 24, right 22, left 22, left 23, right 24, right 22, left 22, left 23, right 24, left 24, left 25, right 24, right 22, right 11, right 24, right 22, right 16, right 24, left 24, left 25, right 24, right 22, left 22, left 23, right 24, right 22, left 22, left 23, right 24, left 24, left 25, right 24, right 22, right 11, right 21, left 22, left 24, right 21, left 22, left 24, right 21, left 22, left 24, left 16, left 21, right 24, right 22, right 16, right 24, left 24, left 25, right 24, right 22, left 22, left 23, right 24, right 22, left 22, left 23, right 24, left 24, left 25, right 24, right 22, right 11, right 25, right 25, right 25, left 16, left 21, right 23, left 24, right 23, left 24, right 23, left 24, left 16, left 21, right 23, left 24, right 23, left 24, right 23, left 24, left 16, left 21, right 25, right 25, right 25, left 16, left 21, left 11, left 21, right 21, left 22, left 24, right 21, left 22, left 24, right 21, left 22, left 24, left 16, left 21] :> [stacks_size]bracket
 
-  def hash_table : [hash_table_size](bool, [q + k]terminal, ((i64, i64), (i64, i64))) =
-    [(true, [6, 1], ((65, 68), (56, 58))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (true, [9, 1], ((73, 78), (62, 66))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (true, [0, 10], ((17, 20), (13, 15))), (false, [0, 2], ((0, 3), (0, 3))), (true, [3, 1], ((49, 52), (40, 42))), (true, [0, 4], ((6, 10), (5, 8))), (false, [0, 2], ((0, 3), (0, 3))), (true, [1, 0], ((20, 23), (15, 19))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (true, [9, 0], ((70, 73), (58, 62))), (true, [4, 0], ((52, 54), (42, 45))), (false, [0, 2], ((0, 3), (0, 3))), (true, [5, 1], ((60, 64), (51, 54))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (true, [2, 4], ((34, 38), (28, 31))), (false, [0, 2], ((0, 3), (0, 3))), (true, [2, 2], ((28, 31), (23, 26))), (true, [3, 0], ((48, 49), (38, 40))), (true, [0, 5], ((10, 14), (8, 11))), (true, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (true, [6, 0], ((64, 65), (54, 56))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (true, [8, 9], ((68, 70), (58, 58))), (true, [4, 1], ((54, 58), (45, 48))), (true, [5, 0], ((58, 60), (48, 51))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (false, [0, 2], ((0, 3), (0, 3))), (true, [2, 5], ((38, 42), (31, 34))), (true, [2, 6], ((42, 45), (34, 36))), (true, [2, 3], ((31, 34), (26, 28))), (true, [10, 8], ((78, 78), (66, 66))), (true, [0, 6], ((14, 17), (11, 13))), (true, [2, 10], ((45, 48), (36, 38))), (true, [0, 3], ((3, 6), (3, 5))), (true, [1, 1], ((23, 28), (19, 23)))] :> [hash_table_size](bool, [q + k]terminal, ((i64, i64), (i64, i64)))
-
-  def stacks : [stacks_size]bracket =
-    [right 22, right 20, right 14, right 22, left 22, left 23, right 22, right 20, left 20, left 21, right 22, right 20, left 20, left 21, right 22, left 22, left 23, right 22, right 20, right 10, right 19, left 20, left 22, right 19, left 20, left 22, left 14, left 19, right 22, right 20, right 14, right 22, left 22, left 23, right 22, right 20, left 20, left 21, right 22, right 20, left 20, left 21, right 22, left 22, left 23, right 22, right 20, right 10, right 23, right 23, left 14, left 19, right 21, left 22, right 21, left 22, left 14, left 19, right 21, left 22, right 21, left 22, left 14, left 19, right 23, right 23, left 14, left 19, left 10, left 19, right 19, left 20, left 22, right 19, left 20, left 22, left 14, left 19] :> [stacks_size]bracket
-
-  def productions : [productions_size]production =
-    [7, 3, 13, 5, 14, 7, 1, 15, 7, 2, 16, 6, 17, 7, 3, 0, 4, 8, 10, 0, 4, 9, 12, 7, 3, 13, 5, 14, 7, 1, 15, 7, 2, 16, 6, 17, 7, 3, 8, 10, 9, 12, 4, 8, 10, 4, 9, 12, 4, 8, 10, 4, 9, 12, 8, 10, 9, 12, 0, 4, 8, 10, 0, 4, 9, 12] :> [productions_size]production
+def productions: [productions_size]production =
+  [7, 3, 15, 5, 16, 7, 1, 17, 7, 2, 18, 6, 19, 7, 3, 7, 3, 15, 5, 16, 7, 1, 17, 7, 2, 18, 6, 19, 7, 3, 0, 4, 9, 11, 0, 4, 10, 12, 0, 4, 8, 14, 7, 3, 15, 5, 16, 7, 1, 17, 7, 2, 18, 6, 19, 7, 3, 9, 11, 10, 12, 8, 14, 4, 9, 11, 4, 10, 12, 4, 8, 14, 4, 9, 11, 4, 10, 12, 4, 8, 14, 9, 11, 10, 12, 8, 14, 0, 4, 9, 11, 0, 4, 10, 12, 0, 4, 8, 14] :> [productions_size]production
 }
-
 -- Start of test.fut
 --
 -- The generic parallel lexer tester, expressed as a parameterised
